@@ -1,5 +1,7 @@
 <?php
 
-Route::redirect('/', '/dashboard', '301');
+Route::redirect('/', '/backoffice/dashboard', '301');
 
 Route::get('/dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
+
+Route::post('/change-password', 'UserController@changePassword')->name('admin.change_password');
