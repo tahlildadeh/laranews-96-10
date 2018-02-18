@@ -1,6 +1,6 @@
 @extends('admin.layouts.auth')
 
-@section('title', 'Backoffice | Authentication');
+@section('title', 'Backoffice | Authentication')
 @section('content')
 <div class="">
     <a class="hiddenanchor" id="toregister"></a>

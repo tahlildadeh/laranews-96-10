@@ -36,6 +36,14 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a><i class="fa fa-list"></i> Categoryies <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none">
+                            <li>
+                                <a href="{{route('categories.index')}}">List Categories</a>
+                                <a href="{{route('categories.create')}}">Add Category</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
