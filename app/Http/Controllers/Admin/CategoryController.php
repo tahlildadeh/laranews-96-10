@@ -13,13 +13,18 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $categories = Category::with(['parentCategory' => function ($query) {
             return $query->select('id', 'name');
-        }])->select('id', 'name', 'parent_id')->get();
+        }])->select('id', 'name', 'parent_id');
 
-        return $categories;
+        if($request->q){
+            $categories = $categories->where('name', 'LIKE', '%' . $request->q . '%');
+        }
+
+
+            $categories = $categories->paginate(2);
 
         return view('admin.categories.index', compact('categories'));
     }
@@ -143,6 +148,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Category::where('id', $id)->delete();
+        flash()->message('Category Removed')->success();
+        return back();
     }
 }

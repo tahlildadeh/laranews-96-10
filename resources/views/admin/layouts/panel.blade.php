@@ -35,6 +35,9 @@
 
 @include('admin.partials.scripts')
 @stack('before-body-end')
+<script>
+    $('#flash-overlay-modal').modal();
+</script>
 </body>
 
 </html>

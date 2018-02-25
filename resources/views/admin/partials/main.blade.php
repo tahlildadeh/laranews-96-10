@@ -7,12 +7,15 @@
 
             <div class="title_right">
                 <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                    <form method="get">
                     <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search for...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="button">Go!</button>
-                        </span>
+                            <input type="text" name="q" value="{{ Request::get('q') }}" class="form-control"
+                                   placeholder="Search for...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -28,7 +31,8 @@
                             <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                             </li>
                             <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-expanded="false"><i class="fa fa-wrench"></i></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li><a href="#">Settings 1</a>
                                     </li>
@@ -41,6 +45,7 @@
                         </ul>
                         <div class="clearfix"></div>
                     </div>
+                    @include('flash::message')
                     @yield('content')
                 </div>
             </div>
