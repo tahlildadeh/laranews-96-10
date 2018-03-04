@@ -36,7 +36,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //Todo check authorization
+        $this->authorize('create', Category::class);
         $categories = Category::select('id', 'name')->get();
         return view('admin.categories.create', compact('categories'));
     }
@@ -49,7 +49,6 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
         $this->validate(
             $request,
             [
@@ -60,8 +59,7 @@ class CategoryController extends Controller
                 'parent_id.integer' => 'Parent category is not valid'
             ]
         );
-
-        //Todo check authorization
+        $this->authorize('create', Category::class);
 
 
         $parentCategory = null;
@@ -93,8 +91,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $category = Category::findOrFail($id);
-
-        // TODO check authorization
+        $this->authorize('update', $category);
 
         $categories = Category::select('id', 'name')->get();
         return view('admin.categories.edit', compact('category','categories'));
@@ -122,7 +119,7 @@ class CategoryController extends Controller
         );
 
         $category = Category::findOrFail($id);
-        //Todo check authorization
+        $this->authorize('update', $category);
 
         $category->name = $request->name;
         if(!$request->parent_id) {
@@ -148,7 +145,9 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::where('id', $id)->delete();
+        $category = Category::findOrFail($id);
+        $this->authorize('delete', $category);
+        $category->delete();
         flash()->message('Category Removed')->success();
         return back();
     }

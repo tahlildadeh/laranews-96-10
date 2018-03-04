@@ -40,7 +40,9 @@
                         <ul class="nav child_menu" style="display: none">
                             <li>
                                 <a href="{{route('categories.index')}}">List Categories</a>
+                                @can('create', \App\Category::class)
                                 <a href="{{route('categories.create')}}">Add Category</a>
+                                @endcan
                             </li>
                         </ul>
                     </li>

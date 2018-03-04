@@ -18,12 +18,16 @@
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->parentCategory->name ?? '-' }}</td>
                 <td>
+                    @can('update', $category)
                     <a class="btn btn-default" href="{{ route('categories.edit', ['id' => $category->id]) }}"><i
                                 class="fa fa-edit"></i> Edit</a>
+                    @endcan
+                    @can('delete', $category)
                     <button class="btn btn-danger destroy-model"
                             type="button" data-destroy-url="{{ route('categories.destroy', ['id' => $category->id]) }}">
                         <i class="fa fa-remove"></i> Delete
                     </button>
+                    @endcan
                 </td>
             </tr>
         @empty

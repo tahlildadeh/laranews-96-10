@@ -9,6 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    protected $appends = ['hello'];
+
     const ROLE_AUTHOR = 1;
     const ROLE_EDITOR = 2;
     const ROLE_ADMIN = 3;
@@ -30,4 +32,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getHelloAttribute($value) {
+        return 'salam';
+    }
 }
