@@ -44,6 +44,11 @@ Route::get('/article/{article}', function(\App\Article $article) {
     return view('article.show',compact('article', 'subComments'));
 });
 
+Route::get('/mail', function() {
+    $mail = new \App\Mail\Test('Ehsan');
+    Mail::to('ehsan2e@gmail.com')->send($mail);
+});
+
 Route::prefix('backoffice')
     ->group(function () {
         Auth::routes();
