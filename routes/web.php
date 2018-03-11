@@ -49,6 +49,22 @@ Route::get('/mail', function() {
     Mail::to('ehsan2e@gmail.com')->send($mail);
 });
 
+Route::get('/awesome', function() {
+    $awesome1 = app(\Awesome\Awesome::class);
+    $awesome2 = app(\Awesome\Awesome::class);
+    $t = app('abcdefg');
+
+    echo '<div>';
+    echo $awesome1->getSerial();
+    echo '</div><div>';
+    echo $awesome2->getSerial();
+    echo '</div><div>';
+    echo $t->rand;
+    echo '</div><div>';
+    echo \Awesome::getSerial();
+    die('</div>');
+});
+
 Route::prefix('backoffice')
     ->group(function () {
         Auth::routes();
