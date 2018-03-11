@@ -36,6 +36,16 @@
                             </li>
                         </ul>
                     </li>
+                    <li><a><i class="fa fa-list"></i> Articles <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none">
+                            <li>
+                                <a href="{{route('articles.index')}}">List Articles</a>
+                                @can('create', \App\Article::class)
+                                <a href="{{route('articles.create')}}">Add Article</a>
+                                @endcan
+                            </li>
+                        </ul>
+                    </li>
                     <li><a><i class="fa fa-list"></i> Categoryies <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
                             <li>

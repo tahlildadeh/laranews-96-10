@@ -43,27 +43,3 @@
         </tfoot>
     </table>
 @endsection
-
-@push('before-body-end')
-<script>
-    jQuery(function () {
-        jQuery('.destroy-model').on('click', function (e) {
-            e.preventDefault();
-            var url = jQuery(this).data('destroy-url');
-            if (!confirm('Are yousure that you want to remove this record')) {
-                return;
-            }
-            var token = jQuery('meta[name="csrf-token"]').attr('content');
-            var html = '<form method="post" action="' + url + '">' +
-                '<input type="hidden" name="_token" value="'+ token +'" >' +
-                '<input type="hidden" name="_method" value="DELETE" >' +
-                '</form>';
-            var form = jQuery(html);
-            jQuery('body').append(form);
-            setTimeout(function () {
-                form.submit()
-            }, 100);
-        })
-    });
-</script>
-@endpush

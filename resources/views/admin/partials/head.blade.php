@@ -23,4 +23,4 @@
 <!-- switchery -->
 <link rel="stylesheet" href="{{ asset('assets/admin/css/switchery/switchery.min.css') }}" />
 
-@section('styles')
+@stack('styles')

@@ -48,4 +48,4 @@
 <script src="{{ asset('assets/admin/js/pace/pace.min.js') }}"></script>
 <script src="{{ asset('assets/admin/js/app.js') }}"></script>
 
-@section('scripts')
+@stack('scripts')

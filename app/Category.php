@@ -10,6 +10,11 @@ class Category extends Model
 
     protected $fillable = ['name'];
 
+    public function articles()
+    {
+        return $this->hasMany(Article::class, 'category_id', 'id');
+    }
+
     public function children()
     {
         return $this->hasMany(Category::class, 'parent_id', 'id');
@@ -17,6 +22,10 @@ class Category extends Model
 
     public function parentCategory() {
         return $this->belongsTo(Category::class, 'parent_id', 'id');
+    }
+
+    public function scopeList($query) {
+        return $query->select('id', 'name')->orderBy('name');
     }
 
     public static function createCategory(string $name, Category $parentCategory=null){

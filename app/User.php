@@ -33,6 +33,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function authoredArticles()
+    {
+        return $this->hasMany(Article::class, 'author_id', 'id');
+    }
+
+    public function editedArticles()
+    {
+        return $this->hasMany(Article::class, 'editor_id', 'id');
+    }
+
     public function getHelloAttribute($value) {
         return 'salam';
     }
